@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 #
-# Script to get a peer list from different url and connect automaticly
-# just run as cronjob and watch your peer connects growing
+# Script to get a peer list from different url and connect via lncli command
+# just run as cronjob and watch your peer connects grow
+# activate -print- commands for output
 
 import requests, subprocess, json, sys, os
 
@@ -10,8 +11,8 @@ urls = [ 'https://1ml.com/node?order=capacity&json=true',
          'https://1ml.com/node?order=lastupdated&json=true', 
          'https://1ml.com/node?order=mostchannels&json=true']
 
-peerCommand = "lncli listpeers"
-process     = subprocess.Popen(peerCommand.split(), stdout=subprocess.PIPE)
+peercommand = "lncli listpeers"
+process     = subprocess.Popen(peercommand.split(), stdout=subprocess.PIPE)
 peers       = json.loads(process.communicate()[0])
 pub_keys    = []
 
@@ -35,20 +36,11 @@ for url in urls:
                 process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE, stderr=devnull)
                 streamdata = process.communicate()[0]
                 #if process.returncode == 0:
-                #    print "%s neu connected"  % ( line["pub_key"] )
+                #    print "%s now connected"  % ( line["pub_key"] )
                 #else:
                 #    print "%s returncode: %d" % ( line["pub_key"], int(process.returncode) )
             else:
-                #print "%s bereits connected"  % ( line["pub_key"] )
+                #print "%s already connected"  % ( line["pub_key"] )
                 continue
         else:
             continue
-
-#bashCommand = "lncli getinfo | grep peer"
-#process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
-#info, info_error = process.communicate()
-
-#if info_error:
-#    print info_error
-#else:
-#    print json.loads(info)["num_peers"]
