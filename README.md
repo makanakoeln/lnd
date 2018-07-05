@@ -2,6 +2,9 @@
 
 ## 3rd party tutorials
 
-LND@Raspberry		https://github.com/Stadicus/guides/blob/master/raspibolt/README.md
+- LND@Raspberry		https://github.com/Stadicus/guides/blob/master/raspibolt/README.md
+- Check_MK@Raspberry	https://github.com/chrisss404/check-mk-arm
 
-Check_MK@Raspberry	https://github.com/chrisss404/check-mk-arm
+## My check_mk scripts & checks
+
+https://github.com/makanakoeln/check_mk
