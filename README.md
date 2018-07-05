@@ -1,6 +1,6 @@
-#LND related scripts
+# LND related scripts
 
-Tutorials: 
+## 3rd party tutorials
 
 LND@Raspberry		https://github.com/Stadicus/guides/blob/master/raspibolt/README.md
 
